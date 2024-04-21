@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +10,43 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const int twentyFive = 1500;
+  bool isRunning = false;
+  int seconds = twentyFive;
+  int promodos = 0;
+  late Timer timer;
+
+  void ticking(Timer timer) {
+    setState(() {
+      seconds--;
+      if (seconds == 0) {
+        promodos++;
+        seconds = twentyFive;
+        isRunning = false;
+        timer.cancel();
+      }
+    });
+  }
+
+  void onStartPressed() {
+    setState(() {
+      isRunning = true;
+    });
+    timer = Timer.periodic(const Duration(seconds: 1), ticking);
+  }
+
+  void onPausePressed() {
+    setState(() {
+      isRunning = false;
+    });
+    timer.cancel();
+  }
+
+  String format(int seconds) {
+    var duration = Duration(seconds: seconds);
+    return duration.toString().split('.').first.substring(2, 7);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '25:00',
+                format(seconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 50,
@@ -31,10 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 3,
             child: Center(
               child: IconButton(
-                icon: const Icon(Icons.play_circle_outline),
+                icon: isRunning
+                    ? const Icon(Icons.pause)
+                    : const Icon(Icons.play_circle_outline),
                 iconSize: 100,
                 color: Theme.of(context).cardColor,
-                onPressed: () {},
+                onPressed: isRunning ? onPausePressed : onStartPressed,
               ),
             ),
           ),
@@ -44,8 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Expanded(
                   child: Container(
-                    decoration:
-                        BoxDecoration(color: Theme.of(context).cardColor),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
+                      ),
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -59,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          '0',
+                          '$promodos',
                           style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.w600,
