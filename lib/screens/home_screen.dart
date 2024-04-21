@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
     timer.cancel();
   }
 
+  void onStopPressed() {
+    setState(() {
+      isRunning = false;
+      seconds = twentyFive;
+      timer.cancel();
+    });
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split('.').first.substring(2, 7);
@@ -69,13 +78,25 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 3,
             child: Center(
-              child: IconButton(
-                icon: isRunning
-                    ? const Icon(Icons.pause)
-                    : const Icon(Icons.play_circle_outline),
-                iconSize: 100,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: isRunning
+                        ? const Icon(Icons.pause_circle_outline)
+                        : const Icon(Icons.play_circle_outline),
+                    iconSize: 100,
+                    color: Theme.of(context).cardColor,
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                  ),
+                  if (isRunning)
+                    IconButton(
+                      icon: const Icon(Icons.stop_circle_outlined),
+                      iconSize: 100,
+                      color: Theme.of(context).cardColor,
+                      onPressed: onStopPressed,
+                    ),
+                ],
               ),
             ),
           ),
