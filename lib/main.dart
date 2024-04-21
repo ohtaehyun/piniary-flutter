@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/widgets/button.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               Row(
@@ -24,7 +27,7 @@ class App extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         'Hey, Selena',
                         style: TextStyle(
                           color: Colors.white,
@@ -43,7 +46,7 @@ class App extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 120,
               ),
               Text(
@@ -53,10 +56,10 @@ class App extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 '\$5 194 482',
                 style: TextStyle(
                   color: Colors.white,
@@ -64,21 +67,20 @@ class App extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Row(
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(45)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-                      child: Text('Transfer'),
-                    ),
-                  )
+                  Button(
+                      text: 'Transfer',
+                      bgColor: Colors.amber,
+                      textColor: Colors.black),
+                  Button(
+                      text: 'Request',
+                      bgColor: Color.fromARGB(95, 90, 88, 88),
+                      textColor: Colors.white),
                 ],
               )
             ],
