@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:piniary/widgets/button.dart';
 import 'package:piniary/widgets/currency_card.dart';
 
