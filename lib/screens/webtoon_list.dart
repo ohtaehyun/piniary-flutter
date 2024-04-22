@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/webtoon_model.dart';
+import 'package:piniary/services/api_service.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodayToons();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,15 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
         ),
       ),
-      body: const Text('asd'),
+      body: FutureBuilder(
+        future: webtoons,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const Text('there is data');
+          }
+          return const Text('loading');
+        },
+      ),
     );
   }
 }

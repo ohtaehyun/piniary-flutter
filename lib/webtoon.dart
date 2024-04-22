@@ -4,7 +4,7 @@ import 'package:piniary/services/api_service.dart';
 
 void main(List<String> args) {
   runApp(const WebtoonApp());
-  ApiService().getTodayToons();
+  ApiService.getTodayToons();
 }
 
 class WebtoonApp extends StatelessWidget {
@@ -12,6 +12,6 @@ class WebtoonApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomeScreen());
+    return MaterialApp(home: HomeScreen());
   }
 }
