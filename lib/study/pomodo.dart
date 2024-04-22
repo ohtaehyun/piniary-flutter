@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:piniary/screens/home_screen.dart';
+import 'package:piniary/study/screens/home_screen.dart';
 
 void main(List<String> args) {
   runApp(const Pomodo());

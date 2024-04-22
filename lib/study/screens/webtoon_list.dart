@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:piniary/models/webtoon_model.dart';
-import 'package:piniary/services/api_service.dart';
-import 'package:piniary/widgets/webtoon.dart';
+import 'package:piniary/study/models/webtoon_model.dart';
+import 'package:piniary/study/services/api_service.dart';
+import 'package:piniary/study/widgets/webtoon.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
