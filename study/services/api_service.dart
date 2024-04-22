@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:piniary/study/models/webtoon_detail.dart';
-import 'package:piniary/study/models/webtoon_episode.dart';
-import 'package:piniary/study/models/webtoon_model.dart';
+import '../models/webtoon_detail.dart';
+import '../models/webtoon_episode.dart';
+import '../models/webtoon_model.dart';
 
 class ApiService {
   static const String baseUrl =

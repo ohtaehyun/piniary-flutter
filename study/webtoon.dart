@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:piniary/study/screens/webtoon_list.dart';
-import 'package:piniary/study/services/api_service.dart';
+import 'screens/webtoon_list.dart';
+import 'services/api_service.dart';
 
 void main(List<String> args) {
   runApp(const WebtoonApp());

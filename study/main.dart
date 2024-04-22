@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:piniary/study/widgets/button.dart';
-import 'package:piniary/study/widgets/currency_card.dart';
+import 'widgets/button.dart';
+import 'widgets/currency_card.dart';
 
 void main() {
   runApp(const App());

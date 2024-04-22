@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:piniary/study/models/webtoon_detail.dart';
-import 'package:piniary/study/models/webtoon_episode.dart';
-import 'package:piniary/study/services/api_service.dart';
+import '../models/webtoon_detail.dart';
+import '../models/webtoon_episode.dart';
+import '../services/api_service.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
