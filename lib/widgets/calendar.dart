@@ -13,12 +13,27 @@ class PiniaryCalendar extends StatefulWidget {
 
 class _PiniaryCalendarState extends State<PiniaryCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _focusedDay = DateTime.now(), _selectedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
+      selectedDayPredicate: (day) {
+        return isSameDay(_selectedDay, day);
+      },
+      onDaySelected: (selectedDay, focusedDay) {
+        setState(() {
+          if (selectedDay.month == focusedDay.month) {
+            _selectedDay = selectedDay;
+            _focusedDay = focusedDay;
+          }
+        });
+      },
+      onPageChanged: (focusedDay) {
+        _focusedDay = focusedDay;
+      },
       daysOfWeekHeight: 24,
-      focusedDay: DateTime.now(),
+      focusedDay: _focusedDay,
       firstDay: DateTime(1924, 1, 1),
       lastDay: DateTime.now(),
       calendarFormat: _calendarFormat,
@@ -27,18 +42,24 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
           _calendarFormat = format;
         });
       },
+      availableGestures: AvailableGestures.none,
       locale: 'ko-KR',
       headerStyle: const HeaderStyle(
         formatButtonVisible: false,
         titleCentered: true,
       ),
       calendarBuilders: CalendarBuilders(
-        defaultBuilder: defaultCellBuilder,
+        defaultBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
+        selectedBuilder: (context, day, focusedDay) =>
+            CalendarDayCell(day: day, color: Colors.green),
+        todayBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
       ),
     );
   }
 
-  Widget defaultCellBuilder(context, day, focusedDay) {
-    return CalendarDayCell(day: day);
+  // Widget defaultCellBuilder(context, day, focusedDay) {}
+
+  Widget selectedCellBuilder(context, day, focusedDay) {
+    return CalendarDayCell(day: day, color: Colors.green);
   }
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class CalendarDayCell extends StatelessWidget {
   final dynamic day;
-  const CalendarDayCell({super.key, required this.day});
+  final Color color;
+  const CalendarDayCell(
+      {super.key, required this.day, this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CalendarDayCell extends StatelessWidget {
           height: 18,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
-            color: Colors.green,
+            color: color,
           ),
           child: Center(
             child: Text(
