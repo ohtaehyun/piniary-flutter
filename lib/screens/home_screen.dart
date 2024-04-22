@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/widgets/app_bar.dart';
+import 'package:piniary/widgets/calendar.dart';
 
 class HomeScreen extends StatelessWidget {
   static const List<Piniary> piniaries = [
-    Piniary(title: 'a', date: '2024.04.04'),
-    Piniary(title: 'b', date: '2024.04.04'),
-    Piniary(title: 'c', date: '2024.04.04'),
-    Piniary(title: 'd', date: '2024.04.04'),
-    Piniary(title: 'e', date: '2024.04.04'),
-    Piniary(title: 'f', date: '2024.04.04'),
+    Piniary(title: 'a', date: '2024.04.04', pini: "asd"),
+    Piniary(title: 'b', date: '2024.04.04', pini: "asd"),
+    Piniary(title: 'c', date: '2024.04.04', pini: "asd"),
+    Piniary(title: 'd', date: '2024.04.04', pini: "asd"),
+    Piniary(title: 'e', date: '2024.04.04', pini: "asd"),
+    Piniary(title: 'f', date: '2024.04.04', pini: "asd"),
   ];
 
   const HomeScreen({super.key});
@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
       appBar: const PiniaryAppBar(),
       body: Column(
         children: [
+          const PiniaryCalendar(),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
