@@ -25,14 +25,10 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
           _calendarFormat = format;
         });
       },
+      locale: 'ko-KR',
       headerStyle: const HeaderStyle(
         formatButtonVisible: false,
         titleCentered: true,
-        // titleTextFormatter: (date, locale) {
-        //   print(date);
-        //   print(locale);
-        //   return "?";
-        // },
       ),
     );
   }

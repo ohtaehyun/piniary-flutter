@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:piniary/screens/home_screen.dart';
 
 void main(List<String> args) {
+  initializeDateFormatting('ko_KR', '');
   runApp(const PiniaryApp());
 }
 
