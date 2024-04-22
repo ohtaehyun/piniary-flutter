@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:piniary/screens/home_screen.dart';
-import 'package:piniary/widgets/app_bar.dart';
 
 void main(List<String> args) {
-  runApp(const Piniary());
+  runApp(const PiniaryApp());
 }
 
-class Piniary extends StatelessWidget {
-  const Piniary({super.key});
+class PiniaryApp extends StatelessWidget {
+  const PiniaryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
