@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/piniary.dart';
+import 'package:piniary/widgets/pini_sticker.dart';
 
 class CalendarDayCell extends StatelessWidget {
   final dynamic day;
   final Color color;
-  const CalendarDayCell(
-      {super.key, required this.day, this.color = Colors.white});
+  final Piniary? piniary;
+  const CalendarDayCell({
+    super.key,
+    required this.day,
+    this.piniary,
+    this.color = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Icon(Icons.hourglass_empty),
+        if (piniary != null) PiniSticker(pini: piniary!.pini),
         Container(
           width: 40,
           height: 18,

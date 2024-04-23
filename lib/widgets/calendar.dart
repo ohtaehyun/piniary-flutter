@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/piniary.dart';
+import 'package:piniary/services/api_service.dart';
 import 'package:piniary/widgets/calendar_day_cell.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -14,6 +16,8 @@ class PiniaryCalendar extends StatefulWidget {
 class _PiniaryCalendarState extends State<PiniaryCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now(), _selectedDay = DateTime.now();
+  Map<int, Piniary> piniaries = ApiService.getPiniariesByYearMonth(
+      DateTime.now().year, DateTime.now().month);
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,8 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         });
       },
       onPageChanged: (focusedDay) {
+        piniaries = ApiService.getPiniariesByYearMonth(
+            focusedDay.year, focusedDay.month);
         _focusedDay = focusedDay;
       },
       daysOfWeekHeight: 24,
@@ -49,17 +55,17 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         titleCentered: true,
       ),
       calendarBuilders: CalendarBuilders(
-        defaultBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
-        selectedBuilder: (context, day, focusedDay) =>
-            CalendarDayCell(day: day, color: Colors.green),
+        defaultBuilder: (context, day, focusedDay) => CalendarDayCell(
+          day: day,
+          piniary: piniaries[day.day],
+        ),
+        selectedBuilder: (context, day, focusedDay) => CalendarDayCell(
+          day: day,
+          color: Colors.green,
+          piniary: piniaries[day.day],
+        ),
         todayBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
       ),
     );
-  }
-
-  // Widget defaultCellBuilder(context, day, focusedDay) {}
-
-  Widget selectedCellBuilder(context, day, focusedDay) {
-    return CalendarDayCell(day: day, color: Colors.green);
   }
 }

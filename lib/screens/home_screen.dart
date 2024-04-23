@@ -4,14 +4,7 @@ import 'package:piniary/widgets/app_bar.dart';
 import 'package:piniary/widgets/calendar.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const List<Piniary> piniaries = [
-    Piniary(title: 'a', date: '2024.04.04', pini: "asd"),
-    Piniary(title: 'b', date: '2024.04.04', pini: "asd"),
-    Piniary(title: 'c', date: '2024.04.04', pini: "asd"),
-    Piniary(title: 'd', date: '2024.04.04', pini: "asd"),
-    Piniary(title: 'e', date: '2024.04.04', pini: "asd"),
-    Piniary(title: 'f', date: '2024.04.04', pini: "asd"),
-  ];
+  static const List<Piniary> piniaries = [];
 
   const HomeScreen({super.key});
 
