@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Text(piniaries[index].title);
+                return const Text('1');
               },
               separatorBuilder: (context, index) {
                 return const SizedBox(

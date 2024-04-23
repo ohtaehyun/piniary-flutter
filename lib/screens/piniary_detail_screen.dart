@@ -22,13 +22,8 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.piniary.title),
-              Row(
-                children: [
-                  Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
-                  PiniSticker(pini: widget.piniary.pini),
-                ],
-              )
+              Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
+              PiniSticker(pini: widget.piniary.pini),
             ],
           ),
         ],

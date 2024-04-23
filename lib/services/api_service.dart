@@ -4,8 +4,8 @@ import 'package:piniary/widgets/pini_sticker.dart';
 class ApiService {
   static Map<int, Piniary> getPiniariesByYearMonth(int year, int month) {
     List<Piniary> piniaries = [
-      Piniary(title: 'test', date: DateTime(year, month, 1), pini: Pini.app),
-      Piniary(title: 'asd', date: DateTime(year, month, 2), pini: Pini.happy),
+      Piniary(content: 'test', date: DateTime(year, month, 1), pini: Pini.app),
+      Piniary(content: 'asd', date: DateTime(year, month, 2), pini: Pini.happy),
     ];
     Map<int, Piniary> piniaryMap = {};
 
