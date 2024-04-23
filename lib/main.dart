@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:piniary/models/pini.dart';
+import 'package:piniary/models/piniary.dart';
 import 'package:piniary/screens/home_screen.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(PiniaryAdapter());
+  Hive.registerAdapter(PiniAdapter());
   initializeDateFormatting('ko_KR', '');
   runApp(const PiniaryApp());
 }

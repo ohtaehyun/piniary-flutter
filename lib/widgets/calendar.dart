@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/screens/piniary_detail_screen.dart';
 import 'package:piniary/services/api_service.dart';
 import 'package:piniary/widgets/calendar_day_cell.dart';
-import 'package:piniary/widgets/pini_sticker.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PiniaryCalendar extends StatefulWidget {

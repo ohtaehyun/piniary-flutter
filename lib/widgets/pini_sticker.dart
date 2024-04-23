@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/pini.dart';
 
 class PiniSticker extends StatelessWidget {
   final Pini pini;
@@ -19,14 +20,4 @@ class PiniSticker extends StatelessWidget {
           : Image.asset(pini.path),
     );
   }
-}
-
-enum Pini {
-  none("", ""),
-  app("assets/pini_app.png", "app"),
-  happy("assets/pini_happy.png", "happy");
-
-  final String mood;
-  final String path;
-  const Pini(this.path, this.mood);
 }

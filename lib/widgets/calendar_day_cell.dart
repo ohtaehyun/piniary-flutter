@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/models/pini.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
 
 class CalendarDayCell extends StatelessWidget {
