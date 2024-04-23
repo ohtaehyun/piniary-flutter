@@ -26,6 +26,11 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
               PiniSticker(pini: widget.piniary.pini),
             ],
           ),
+          const TextField(
+            keyboardType: TextInputType.multiline,
+            minLines: 1,
+            maxLines: null,
+          ),
         ],
       ),
     );
