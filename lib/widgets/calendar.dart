@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/api_service.dart';
 import 'package:piniary/widgets/calendar_day_cell.dart';
+import 'package:piniary/widgets/pini_sticker.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PiniaryCalendar extends StatefulWidget {
@@ -57,14 +58,14 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, day, focusedDay) => CalendarDayCell(
           day: day,
-          piniary: piniaries[day.day],
+          pini: piniaries[day.day]?.pini ?? Pini.none,
         ),
         selectedBuilder: (context, day, focusedDay) => CalendarDayCell(
           day: day,
           color: Colors.green,
-          piniary: piniaries[day.day],
+          pini: piniaries[day.day]?.pini ?? Pini.none,
         ),
-        todayBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
+        // todayBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
       ),
     );
   }

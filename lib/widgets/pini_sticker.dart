@@ -14,7 +14,9 @@ class PiniSticker extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Image.asset(pini.path),
+      child: pini == Pini.none
+          ? const Icon(Icons.add_circle_outline)
+          : Image.asset(pini.path),
     );
   }
 }
