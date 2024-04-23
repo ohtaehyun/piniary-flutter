@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:piniary/models/piniary.dart';
+import 'package:piniary/screens/piniary_detail_screen.dart';
 import 'package:piniary/services/api_service.dart';
 import 'package:piniary/widgets/calendar_day_cell.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
@@ -31,6 +32,21 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
           if (selectedDay.month == focusedDay.month) {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return PiniaryDetailScreen(
+                    piniary: piniaries[focusedDay.day] ??
+                        Piniary(
+                          title: '제목제목제목',
+                          date: focusedDay,
+                          pini: Pini.none,
+                        ),
+                  );
+                },
+              ),
+            );
           }
         });
       },
