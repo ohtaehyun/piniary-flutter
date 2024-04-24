@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/piniary_service.dart';
@@ -35,7 +36,10 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
-              PiniSticker(pini: widget.piniary.pini),
+              Hero(
+                tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                child: PiniSticker(pini: widget.piniary.pini),
+              ),
             ],
           ),
           const TextField(

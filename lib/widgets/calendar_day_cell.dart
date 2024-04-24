@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
 
 class CalendarDayCell extends StatelessWidget {
-  final dynamic day;
+  final DateTime day;
   final Color color;
   final Pini pini;
 
@@ -18,7 +20,10 @@ class CalendarDayCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        PiniSticker(pini: pini),
+        Hero(
+          tag: DateFormat('yyyy-MM-dd').format(day),
+          child: PiniSticker(pini: pini),
+        ),
         Container(
           width: 40,
           height: 18,
