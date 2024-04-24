@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/piniary_service.dart';
 import 'package:piniary/widgets/app_bar.dart';
@@ -38,7 +39,38 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
               Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
               Hero(
                 tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
-                child: PiniSticker(pini: widget.piniary.pini),
+                child: GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.asset(
+                                    Pini.app.path,
+                                    width: 100,
+                                  ),
+                                  Image.asset(
+                                    Pini.happy.path,
+                                    width: 100,
+                                  ),
+                                ],
+                              ),
+                              const Row(),
+                              const Row(),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: PiniSticker(pini: widget.piniary.pini),
+                ),
               ),
             ],
           ),
