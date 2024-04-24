@@ -10,32 +10,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PiniaryAppBar(),
+    return const Scaffold(
+      appBar: PiniaryAppBar(),
       body: Column(
         children: [
-          const PiniaryCalendar(),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('내가 쓴 일기'),
-              Text('더보기'),
-            ],
-          ),
-          Expanded(
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const Text('1');
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  width: 10,
-                );
-              },
-              itemCount: piniaries.length,
-            ),
-          )
+          PiniaryCalendar(),
         ],
       ),
     );
