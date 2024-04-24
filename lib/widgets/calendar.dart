@@ -21,6 +21,15 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
   Map<int, Piniary> piniaries = PiniaryService.getPiniaryByYearMonth(
       year: DateTime.now().year, month: DateTime.now().month);
 
+  void refresh() {
+    setState(() {
+      piniaries = PiniaryService.getPiniaryByYearMonth(
+        year: _focusedDay.year,
+        month: _focusedDay.month,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
@@ -46,17 +55,13 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
                   );
                 },
               ),
-            );
+            ).then((value) => refresh());
           }
         });
       },
       onPageChanged: (focusedDay) {
-        piniaries = PiniaryService.getPiniaryByYearMonth(
-          year: focusedDay.year,
-          month: focusedDay.month,
-        );
-        print(piniaries);
         _focusedDay = focusedDay;
+        refresh();
       },
       daysOfWeekHeight: 24,
       focusedDay: _focusedDay,
