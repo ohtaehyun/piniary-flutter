@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/piniary_service.dart';
@@ -23,6 +22,7 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
         child: GestureDetector(
           onTap: () {
             PiniaryService.save(piniary: widget.piniary);
+            Navigator.pop(context);
           },
           child: const Center(
             child: Icon(Icons.check_outlined),

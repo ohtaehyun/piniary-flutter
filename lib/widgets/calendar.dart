@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/screens/piniary_detail_screen.dart';
-import 'package:piniary/services/api_service.dart';
+import 'package:piniary/services/piniary_service.dart';
 import 'package:piniary/widgets/calendar_day_cell.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -18,8 +18,8 @@ class PiniaryCalendar extends StatefulWidget {
 class _PiniaryCalendarState extends State<PiniaryCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now(), _selectedDay = DateTime.now();
-  Map<int, Piniary> piniaries = ApiService.getPiniariesByYearMonth(
-      DateTime.now().year, DateTime.now().month);
+  Map<int, Piniary> piniaries = PiniaryService.getPiniaryByYearMonth(
+      year: DateTime.now().year, month: DateTime.now().month);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
                         Piniary(
                           content: '내용',
                           date: focusedDay,
-                          pini: Pini.none,
+                          pini: Pini.app,
                         ),
                   );
                 },
@@ -51,8 +51,11 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         });
       },
       onPageChanged: (focusedDay) {
-        piniaries = ApiService.getPiniariesByYearMonth(
-            focusedDay.year, focusedDay.month);
+        piniaries = PiniaryService.getPiniaryByYearMonth(
+          year: focusedDay.year,
+          month: focusedDay.month,
+        );
+        print(piniaries);
         _focusedDay = focusedDay;
       },
       daysOfWeekHeight: 24,

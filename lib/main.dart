@@ -9,6 +9,8 @@ void main(List<String> args) async {
   await Hive.initFlutter();
   Hive.registerAdapter(PiniaryAdapter());
   Hive.registerAdapter(PiniAdapter());
+  var box = await Hive.openBox('piniaries');
+  await box.clear();
   initializeDateFormatting('ko_KR', '');
   runApp(const PiniaryApp());
 }
