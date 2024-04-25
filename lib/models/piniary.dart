@@ -8,14 +8,18 @@ class Piniary {
   final DateTime date;
 
   @HiveField(1)
-  final Pini pini;
+  Pini pini;
 
   @HiveField(2)
-  final String content;
+  String content;
 
-  const Piniary({
+  Piniary({
     required this.content,
     required this.date,
     required this.pini,
   });
+
+  updateContent(String content) {
+    this.content = content;
+  }
 }

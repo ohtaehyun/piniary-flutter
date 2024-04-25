@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
@@ -16,6 +16,14 @@ class PiniaryDetailScreen extends StatefulWidget {
 }
 
 class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
+  late final TextEditingController textController;
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController(text: widget.piniary.content);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +31,7 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
       bottomNavigationBar: BottomAppBar(
         child: GestureDetector(
           onTap: () {
+            widget.piniary.content = textController.text;
             PiniaryService.save(piniary: widget.piniary);
             Navigator.pop(context);
           },
@@ -74,10 +83,11 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
               ),
             ],
           ),
-          const TextField(
+          TextField(
             keyboardType: TextInputType.multiline,
             minLines: 1,
             maxLines: null,
+            controller: textController,
           ),
         ],
       ),
