@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/screens/piniary_detail_screen.dart';
@@ -57,9 +56,6 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
                 },
               ),
             ).then((value) {
-              Fluttertoast.showToast(
-                msg: '저장되었습니다.',
-              );
               refresh();
             });
           }

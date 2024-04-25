@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
@@ -62,6 +63,9 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
                         return;
                       }
                       PiniaryService.save(piniary: widget.piniary);
+                      Fluttertoast.showToast(
+                        msg: '저장되었습니다.',
+                      );
                       Navigator.pop(context);
                     },
                     child: const Center(
