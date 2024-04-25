@@ -50,7 +50,7 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
                         Piniary(
                           content: '내용',
                           date: focusedDay,
-                          pini: Pini.app,
+                          pini: Pini.none,
                         ),
                   );
                 },
@@ -61,6 +61,7 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
       },
       onPageChanged: (focusedDay) {
         _focusedDay = focusedDay;
+        _selectedDay = focusedDay;
         refresh();
       },
       daysOfWeekHeight: 24,
@@ -89,7 +90,10 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
           color: Colors.green,
           pini: piniaries[day.day]?.pini ?? Pini.none,
         ),
-        // todayBuilder: (context, day, focusedDay) => CalendarDayCell(day: day),
+        todayBuilder: (context, day, focusedDay) => CalendarDayCell(
+          day: day,
+          pini: piniaries[day.day]?.pini ?? Pini.none,
+        ),
       ),
     );
   }
