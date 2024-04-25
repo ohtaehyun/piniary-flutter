@@ -7,9 +7,9 @@ enum Pini {
   @HiveField(0)
   none("", ""),
   @HiveField(1)
-  app("assets/pini_app.png", "app"),
+  app("assets/pinis/pini_app.png", "app"),
   @HiveField(2)
-  happy("assets/pini_happy.png", "happy");
+  happy("assets/pinis/pini_happy.png", "happy");
 
   final String mood;
   final String path;
