@@ -78,43 +78,45 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
             vertical: 12,
             horizontal: 15,
           ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    DateFormat('yyyy-MM-dd').format(widget.piniary.date),
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black.withOpacity(0.6),
-                    ),
-                  ),
-                  Hero(
-                    tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
-                    child: GestureDetector(
-                      onTap: () {
-                        showPiniSelectBottomSheet();
-                      },
-                      child: PiniSticker(
-                        pini: widget.piniary.pini,
-                        size: 80,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black.withOpacity(0.6),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              TextField(
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: null,
-                controller: textController,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "오늘 하루를 피니로 기록해보세요.",
+                    Hero(
+                      tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                      child: GestureDetector(
+                        onTap: () {
+                          showPiniSelectBottomSheet();
+                        },
+                        child: PiniSticker(
+                          pini: widget.piniary.pini,
+                          size: 80,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  minLines: 1,
+                  maxLines: 50,
+                  controller: textController,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "오늘 하루를 피니로 기록해보세요.",
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
