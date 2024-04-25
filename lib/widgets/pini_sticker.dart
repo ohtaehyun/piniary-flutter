@@ -3,17 +3,22 @@ import 'package:piniary/models/pini.dart';
 
 class PiniSticker extends StatelessWidget {
   final Pini pini;
+  final double size;
 
-  const PiniSticker({super.key, this.pini = Pini.none});
+  const PiniSticker({
+    super.key,
+    this.pini = Pini.none,
+    this.size = 30,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 30,
-      height: 30,
+      width: size,
+      height: size,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(size / 2),
       ),
       child: pini == Pini.none
           ? const Icon(Icons.add_circle_outline)

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/piniary_service.dart';
 import 'package:piniary/widgets/app_bar.dart';
+import 'package:piniary/widgets/pini_selector.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
 
 class PiniaryDetailScreen extends StatefulWidget {
@@ -52,30 +52,15 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return Container(
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    Pini.app.path,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    Pini.happy.path,
-                                    width: 100,
-                                  ),
-                                ],
-                              ),
-                              const Row(),
-                              const Row(),
-                            ],
-                          ),
+                        return PiniSelector(
+                          piniary: widget.piniary,
                         );
                       },
-                    );
+                    ).then((pini) {
+                      setState(() {
+                        if (pini != null) widget.piniary.pini = pini;
+                      });
+                    });
                   },
                   child: PiniSticker(pini: widget.piniary.pini),
                 ),
