@@ -20,7 +20,9 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController(text: widget.piniary.content);
+    textController = TextEditingController(
+      text: widget.piniary.content,
+    );
   }
 
   @override
@@ -39,41 +41,51 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
-              Hero(
-                tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
-                child: GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return PiniSelector(
-                          piniary: widget.piniary,
-                        );
-                      },
-                    ).then((pini) {
-                      setState(() {
-                        if (pini != null) widget.piniary.pini = pini;
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 15,
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
+                Hero(
+                  tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                  child: GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return PiniSelector(
+                            piniary: widget.piniary,
+                          );
+                        },
+                      ).then((pini) {
+                        setState(() {
+                          if (pini != null) widget.piniary.pini = pini;
+                        });
                       });
-                    });
-                  },
-                  child: PiniSticker(pini: widget.piniary.pini),
+                    },
+                    child: PiniSticker(
+                      pini: widget.piniary.pini,
+                      size: 45,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          TextField(
-            keyboardType: TextInputType.multiline,
-            minLines: 1,
-            maxLines: null,
-            controller: textController,
-          ),
-        ],
+              ],
+            ),
+            TextField(
+              keyboardType: TextInputType.multiline,
+              minLines: 1,
+              maxLines: null,
+              controller: textController,
+              decoration: const InputDecoration(border: InputBorder.none),
+            ),
+          ],
+        ),
       ),
     );
   }
