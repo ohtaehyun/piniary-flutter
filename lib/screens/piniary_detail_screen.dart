@@ -71,7 +71,7 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
                     },
                     child: PiniSticker(
                       pini: widget.piniary.pini,
-                      size: 45,
+                      size: 80,
                     ),
                   ),
                 ),

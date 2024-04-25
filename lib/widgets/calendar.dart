@@ -64,7 +64,8 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         _selectedDay = focusedDay;
         refresh();
       },
-      daysOfWeekHeight: 24,
+      daysOfWeekHeight: 20,
+      rowHeight: 70,
       focusedDay: _focusedDay,
       firstDay: DateTime(1924, 1, 1),
       lastDay: DateTime.now(),
@@ -87,7 +88,6 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         ),
         selectedBuilder: (context, day, focusedDay) => CalendarDayCell(
           day: day,
-          color: Colors.green,
           pini: piniaries[day.day]?.pini ?? Pini.none,
         ),
         todayBuilder: (context, day, focusedDay) => CalendarDayCell(

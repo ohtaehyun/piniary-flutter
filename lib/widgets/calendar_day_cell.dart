@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
@@ -22,11 +21,11 @@ class CalendarDayCell extends StatelessWidget {
       children: [
         Hero(
           tag: DateFormat('yyyy-MM-dd').format(day),
-          child: PiniSticker(pini: pini),
+          child: PiniSticker(pini: pini, size: 50),
         ),
         Container(
-          width: 40,
-          height: 18,
+          width: 70,
+          height: 20,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
             color: color,
