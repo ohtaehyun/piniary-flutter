@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
 import 'package:piniary/services/piniary_service.dart';
 import 'package:piniary/widgets/app_bar.dart';
@@ -25,6 +26,21 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
     );
   }
 
+  void showPiniSelectBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return PiniSelector(
+          piniary: widget.piniary,
+        );
+      },
+    ).then((pini) {
+      setState(() {
+        if (pini != null) widget.piniary.pini = pini;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +49,10 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
         child: GestureDetector(
           onTap: () {
             widget.piniary.content = textController.text;
+            if (widget.piniary.pini == Pini.none) {
+              showPiniSelectBottomSheet();
+              return;
+            }
             PiniaryService.save(piniary: widget.piniary);
             Navigator.pop(context);
           },
@@ -56,18 +76,7 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
                   tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
                   child: GestureDetector(
                     onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return PiniSelector(
-                            piniary: widget.piniary,
-                          );
-                        },
-                      ).then((pini) {
-                        setState(() {
-                          if (pini != null) widget.piniary.pini = pini;
-                        });
-                      });
+                      showPiniSelectBottomSheet();
                     },
                     child: PiniSticker(
                       pini: widget.piniary.pini,
@@ -82,7 +91,8 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
               minLines: 1,
               maxLines: null,
               controller: textController,
-              decoration: const InputDecoration(border: InputBorder.none),
+              decoration: const InputDecoration(
+                  border: InputBorder.none, hintText: "오늘 하루를 피니로 기록해보세요."),
             ),
           ],
         ),

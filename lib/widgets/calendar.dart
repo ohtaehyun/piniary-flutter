@@ -48,7 +48,7 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
                   return PiniaryDetailScreen(
                     piniary: piniaries[focusedDay.day] ??
                         Piniary(
-                          content: '내용',
+                          content: '',
                           date: focusedDay,
                           pini: Pini.none,
                         ),
