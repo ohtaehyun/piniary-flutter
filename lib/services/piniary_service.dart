@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:piniary/models/piniary.dart';
 
 class PiniaryService {
@@ -26,6 +27,6 @@ class PiniaryService {
 
   static void save({required Piniary piniary}) async {
     var box = Hive.box('piniaries');
-    await box.add(piniary);
+    await box.put(DateFormat('yyyy-MM-dd').format(piniary.date), piniary);
   }
 }
