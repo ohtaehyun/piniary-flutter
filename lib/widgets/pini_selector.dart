@@ -29,7 +29,7 @@ class PiniSelector extends StatelessWidget {
                   piniSize: piniSize,
                 ),
                 PiniSelect(
-                  pini: Pini.none,
+                  pini: Pini.tired,
                   piniSize: piniSize,
                 ),
                 PiniSelect(
@@ -45,15 +45,15 @@ class PiniSelector extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PiniSelect(
-                  pini: Pini.happy,
+                  pini: Pini.glare,
                   piniSize: piniSize,
                 ),
                 PiniSelect(
-                  pini: Pini.app,
+                  pini: Pini.embarrass,
                   piniSize: piniSize,
                 ),
                 PiniSelect(
-                  pini: Pini.none,
+                  pini: Pini.fun,
                   piniSize: piniSize,
                 ),
               ],
@@ -65,15 +65,15 @@ class PiniSelector extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PiniSelect(
-                  pini: Pini.none,
+                  pini: Pini.love,
                   piniSize: piniSize,
                 ),
                 PiniSelect(
-                  pini: Pini.happy,
+                  pini: Pini.melt,
                   piniSize: piniSize,
                 ),
                 PiniSelect(
-                  pini: Pini.app,
+                  pini: Pini.sad,
                   piniSize: piniSize,
                 ),
               ],
