@@ -44,57 +44,78 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PiniaryAppBar(),
-      bottomNavigationBar: BottomAppBar(
-        child: GestureDetector(
-          onTap: () {
-            widget.piniary.content = textController.text;
-            if (widget.piniary.pini == Pini.none) {
-              showPiniSelectBottomSheet();
-              return;
-            }
-            PiniaryService.save(piniary: widget.piniary);
-            Navigator.pop(context);
-          },
-          child: const Center(
-            child: Icon(Icons.check_outlined),
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 12,
-          horizontal: 15,
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(DateFormat('yyyy-MM-dd').format(widget.piniary.date)),
-                Hero(
-                  tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
-                  child: GestureDetector(
+      body: Scaffold(
+        appBar: const PiniaryAppBar(),
+        bottomNavigationBar: BottomAppBar(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Column(),
+              Column(
+                children: [
+                  GestureDetector(
                     onTap: () {
-                      showPiniSelectBottomSheet();
+                      widget.piniary.content = textController.text;
+                      if (widget.piniary.pini == Pini.none) {
+                        showPiniSelectBottomSheet();
+                        return;
+                      }
+                      PiniaryService.save(piniary: widget.piniary);
+                      Navigator.pop(context);
                     },
-                    child: PiniSticker(
-                      pini: widget.piniary.pini,
-                      size: 80,
+                    child: const Center(
+                      child: Icon(Icons.check_outlined),
                     ),
                   ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 12,
+            horizontal: 15,
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black.withOpacity(0.6),
+                    ),
+                  ),
+                  Hero(
+                    tag: DateFormat('yyyy-MM-dd').format(widget.piniary.date),
+                    child: GestureDetector(
+                      onTap: () {
+                        showPiniSelectBottomSheet();
+                      },
+                      child: PiniSticker(
+                        pini: widget.piniary.pini,
+                        size: 80,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              TextField(
+                keyboardType: TextInputType.multiline,
+                minLines: 1,
+                maxLines: null,
+                controller: textController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "오늘 하루를 피니로 기록해보세요.",
                 ),
-              ],
-            ),
-            TextField(
-              keyboardType: TextInputType.multiline,
-              minLines: 1,
-              maxLines: null,
-              controller: textController,
-              decoration: const InputDecoration(
-                  border: InputBorder.none, hintText: "오늘 하루를 피니로 기록해보세요."),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
