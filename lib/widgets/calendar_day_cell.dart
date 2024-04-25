@@ -17,29 +17,32 @@ class CalendarDayCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Hero(
-          tag: DateFormat('yyyy-MM-dd').format(day),
-          child: PiniSticker(pini: pini, size: 50),
-        ),
-        Container(
-          width: 70,
-          height: 20,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9),
-            color: color,
+    return Padding(
+      padding: const EdgeInsets.only(top: 5),
+      child: Column(
+        children: [
+          Hero(
+            tag: DateFormat('yyyy-MM-dd').format(day),
+            child: PiniSticker(pini: pini, size: 50),
           ),
-          child: Center(
-            child: Text(
-              '${day.day}',
-              style: const TextStyle(
-                fontSize: 12,
+          Container(
+            width: 70,
+            height: 20,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(9),
+              color: color,
+            ),
+            child: Center(
+              child: Text(
+                '${day.day}',
+                style: const TextStyle(
+                  fontSize: 12,
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

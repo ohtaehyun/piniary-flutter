@@ -66,8 +66,21 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
         _selectedDay = focusedDay;
         refresh();
       },
-      daysOfWeekHeight: 20,
-      rowHeight: 70,
+      daysOfWeekHeight: 24,
+      daysOfWeekStyle: const DaysOfWeekStyle(
+        weekdayStyle: TextStyle(
+          fontSize: 15,
+        ),
+        weekendStyle: TextStyle(
+          fontSize: 15,
+        ),
+      ),
+      calendarStyle: const CalendarStyle(
+        isTodayHighlighted: false,
+        outsideDaysVisible: false,
+        tablePadding: EdgeInsets.symmetric(horizontal: 5),
+      ),
+      rowHeight: 75,
       focusedDay: _focusedDay,
       firstDay: DateTime(1924, 1, 1),
       lastDay: DateTime.now(),
