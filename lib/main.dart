@@ -21,7 +21,7 @@ class PiniaryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const HomeScreen(),
-      theme: ThemeData(fontFamily: 'NanumSon'),
+      theme: ThemeData(fontFamily: 'CookieRun'),
     );
   }
 }

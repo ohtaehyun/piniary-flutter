@@ -89,6 +89,9 @@ flutter:
     - family: NanumSon
       fonts:
        - asset: assets/fonts/NanumHimNaeRaNeunMarBoDan.ttf
+    - family: CookieRun
+      fonts:
+       - asset: assets/fonts/CookieRun_Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
