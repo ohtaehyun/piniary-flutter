@@ -15,7 +15,10 @@ class PiniSelector extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          const Text('select pini'),
+          const Text(
+            '오늘의 기분에 맞는 피니를 골라보아요.',
+            style: TextStyle(fontSize: 16),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -31,6 +34,46 @@ class PiniSelector extends StatelessWidget {
                 ),
                 PiniSelect(
                   pini: Pini.happy,
+                  piniSize: piniSize,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PiniSelect(
+                  pini: Pini.happy,
+                  piniSize: piniSize,
+                ),
+                PiniSelect(
+                  pini: Pini.app,
+                  piniSize: piniSize,
+                ),
+                PiniSelect(
+                  pini: Pini.none,
+                  piniSize: piniSize,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PiniSelect(
+                  pini: Pini.none,
+                  piniSize: piniSize,
+                ),
+                PiniSelect(
+                  pini: Pini.happy,
+                  piniSize: piniSize,
+                ),
+                PiniSelect(
+                  pini: Pini.app,
                   piniSize: piniSize,
                 ),
               ],
