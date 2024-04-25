@@ -3,13 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:piniary/models/piniary.dart';
 
 class PiniaryService {
-  static Future<List<Piniary>> getAllPiniaries() async {
-    var box = await Hive.openBox<Piniary>('piniaries');
-    var piniaries = box.values;
-    await box.close();
-    return piniaries.toList();
-  }
-
   static Map<int, Piniary> getPiniaryByYearMonth({
     required year,
     required int month,
