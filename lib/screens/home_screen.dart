@@ -4,8 +4,6 @@ import 'package:piniary/widgets/app_bar.dart';
 import 'package:piniary/widgets/calendar.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const List<Piniary> piniaries = [];
-
   const HomeScreen({super.key});
 
   @override

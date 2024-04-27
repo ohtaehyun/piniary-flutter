@@ -3,12 +3,13 @@ import 'package:intl/intl.dart';
 import 'package:piniary/models/piniary.dart';
 
 class PiniaryService {
+  static final Box<Piniary> box = Hive.box('piniaries');
+
   static Map<int, Piniary> getPiniaryByYearMonth({
     required year,
     required int month,
   }) {
     Map<int, Piniary> piniaryMap = {};
-    var box = Hive.box('piniaries');
     var piniaries = box.values;
     for (var piniary in piniaries) {
       if (piniary.date.month == month && piniary.date.year == year) {
@@ -19,7 +20,8 @@ class PiniaryService {
   }
 
   static void save({required Piniary piniary}) async {
-    var box = Hive.box('piniaries');
     await box.put(DateFormat('yyyy-MM-dd').format(piniary.date), piniary);
   }
+
+  static void clear() => box.clear();
 }

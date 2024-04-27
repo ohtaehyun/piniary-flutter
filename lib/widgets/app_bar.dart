@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piniary/screens/setting_screen.dart';
 
 class PiniaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PiniaryAppBar({super.key});
@@ -9,6 +10,21 @@ class PiniaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 2,
       title: const Text('피니어리'),
       centerTitle: true,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const SettingScreen();
+                },
+              ),
+            );
+          },
+        )
+      ],
     );
   }
 
