@@ -3,7 +3,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
+import 'package:piniary/providers/piniary_provider.dart';
 import 'package:piniary/screens/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main(List<String> args) async {
   await Hive.initFlutter();
@@ -11,7 +13,10 @@ void main(List<String> args) async {
   Hive.registerAdapter(PiniAdapter());
   await Hive.openBox<Piniary>('piniaries');
   initializeDateFormatting('ko_KR', '');
-  runApp(const PiniaryApp());
+  runApp(ChangeNotifierProvider(
+    create: (_) => PiniaryProvider(),
+    child: const PiniaryApp(),
+  ));
 }
 
 class PiniaryApp extends StatelessWidget {

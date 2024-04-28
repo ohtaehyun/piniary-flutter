@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:piniary/services/piniary_service.dart';
+import 'package:piniary/providers/piniary_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -19,7 +20,7 @@ class SettingScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    PiniaryService.clear();
+                    context.read<PiniaryProvider>().deletePiniaries();
                     Fluttertoast.showToast(msg: '모든 데이터가 삭제되었어요.');
                     Navigator.pop(context);
                   },

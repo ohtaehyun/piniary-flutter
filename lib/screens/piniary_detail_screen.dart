@@ -3,10 +3,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:piniary/models/pini.dart';
 import 'package:piniary/models/piniary.dart';
-import 'package:piniary/services/piniary_service.dart';
+import 'package:piniary/providers/piniary_provider.dart';
 import 'package:piniary/widgets/app_bar.dart';
 import 'package:piniary/widgets/pini_selector.dart';
 import 'package:piniary/widgets/pini_sticker.dart';
+import 'package:provider/provider.dart';
 
 class PiniaryDetailScreen extends StatefulWidget {
   final Piniary piniary;
@@ -62,7 +63,9 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
                         showPiniSelectBottomSheet();
                         return;
                       }
-                      PiniaryService.save(piniary: widget.piniary);
+                      context
+                          .read<PiniaryProvider>()
+                          .savePiniary(widget.piniary);
                       Fluttertoast.showToast(
                         msg: '저장되었습니다.',
                       );
