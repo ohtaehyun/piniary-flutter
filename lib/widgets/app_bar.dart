@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:piniary/screens/setting_screen.dart';
 
 class PiniaryAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const PiniaryAppBar({super.key});
+  final bool showSettingIcon;
+  const PiniaryAppBar({
+    super.key,
+    this.showSettingIcon = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +15,20 @@ class PiniaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const Text('피니어리'),
       centerTitle: true,
       actions: [
-        IconButton(
-          icon: const Icon(Icons.settings),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return const SettingScreen();
-                },
-              ),
-            );
-          },
-        )
+        if (showSettingIcon)
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const SettingScreen();
+                  },
+                ),
+              );
+            },
+          )
       ],
     );
   }

@@ -47,7 +47,9 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Scaffold(
-        appBar: const PiniaryAppBar(),
+        appBar: const PiniaryAppBar(
+          showSettingIcon: false,
+        ),
         bottomNavigationBar: BottomAppBar(
           height: 50,
           child: Row(
