@@ -20,6 +20,13 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now(), _selectedDay = DateTime.now();
 
+  bool isThisMonth() {
+    return _focusedDay.year == DateTime.now().year &&
+            _focusedDay.month == DateTime.now().month
+        ? true
+        : false;
+  }
+
   @override
   Widget build(BuildContext context) {
     var piniaryProvider = context.watch<PiniaryProvider>();
@@ -85,9 +92,13 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
       },
       availableGestures: AvailableGestures.none,
       locale: 'ko-KR',
-      headerStyle: const HeaderStyle(
+      headerStyle: HeaderStyle(
         formatButtonVisible: false,
         titleCentered: true,
+        rightChevronIcon: Icon(
+          Icons.chevron_right,
+          color: isThisMonth() ? Colors.grey.withOpacity(0.5) : Colors.black,
+        ),
       ),
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, day, focusedDay) => CalendarDayCell(
