@@ -90,7 +90,7 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
           _calendarFormat = format;
         });
       },
-      availableGestures: AvailableGestures.none,
+      availableGestures: AvailableGestures.horizontalSwipe,
       locale: 'ko-KR',
       headerStyle: HeaderStyle(
         formatButtonVisible: false,
