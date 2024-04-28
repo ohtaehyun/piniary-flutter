@@ -53,6 +53,10 @@ class _PiniaryCalendarState extends State<PiniaryCalendar> {
       onPageChanged: (focusedDay) {
         _focusedDay = focusedDay;
         _selectedDay = focusedDay;
+        piniaryProvider.getPiniariesByYearAndMonth(
+          year: focusedDay.year,
+          month: focusedDay.month,
+        );
         // refresh();
       },
       daysOfWeekHeight: 24,
