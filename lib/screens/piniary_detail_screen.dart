@@ -48,7 +48,7 @@ class _PiniaryDetailScreenState extends State<PiniaryDetailScreen> {
     return Scaffold(
       body: Scaffold(
         appBar: const PiniaryAppBar(
-          showSettingIcon: false,
+          showIcon: false,
         ),
         bottomNavigationBar: BottomAppBar(
           height: 50,
