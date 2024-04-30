@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatelessWidget {
@@ -9,7 +10,11 @@ class StatisticsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('통계'),
       ),
-      body: const Column(),
+      body: Column(
+        children: [
+          LineChart(LineChartData()),
+        ],
+      ),
     );
   }
 }
