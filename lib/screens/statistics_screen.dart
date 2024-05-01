@@ -12,7 +12,28 @@ class StatisticsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          LineChart(LineChartData()),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 200,
+                height: 200,
+                child: PieChart(
+                  PieChartData(sections: [
+                    PieChartSectionData(value: 10, color: Colors.red),
+                    PieChartSectionData(value: 10, color: Colors.green),
+                    PieChartSectionData(value: 10, color: Colors.blue),
+                  ]
+                      // read about it in the PieChartData section
+                      ),
+                  swapAnimationDuration: const Duration(
+                    milliseconds: 150,
+                  ), // Optional
+                  swapAnimationCurve: Curves.linear, // Optional
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
